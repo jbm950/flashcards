@@ -343,9 +343,12 @@ class EditSetsPage(tk.Frame):
         self.cardlist.place(relx=0.885, rely=0.5, relheight=0.8,
                             anchor="center")
 
+        cardnames = []
         for i in self.cardset.fulllist:
             for j in i:
-                self.cardlist.insert("end", j.cardname)
+                cardnames += [j.cardname]
+        cardnames.sort()
+        [self.cardlist.insert("end", j) for j in cardnames]
 
     def updatefields(self):
         self.cardlist.delete(0, "end")
@@ -357,9 +360,12 @@ class EditSetsPage(tk.Frame):
         self.fronte.insert("insert", self.active_card.frontside)
         self.backe.insert("insert", self.active_card.backside)
 
+        cardnames = []
         for i in self.cardset.fulllist:
             for j in i:
-                self.cardlist.insert("end", j.cardname)
+                cardnames += [j.cardname]
+        cardnames.sort()
+        [self.cardlist.insert("end", j) for j in cardnames]
 
 
 class ChooseSetsPage(tk.Frame):
